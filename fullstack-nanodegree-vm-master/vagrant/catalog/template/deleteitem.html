@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+	body{
+		background-color: #c998f7;
+		font-family: sans-serif;
+	}
+
+	h1{
+		font-size: 35px;
+		border-radius: 8px;
+		text-align: center;
+	   box-shadow: 5px 5px 10px;
+	   background-color: white;
+	}
+	.delete{
+		margin-top: 320px;
+		margin-left: 520px;
+		width: 40%;
+		height: 150px;
+		border-radius: 12px;
+		
+		background-color: white;
+	}
+	#deletebtn{
+		margin-left: 60px;
+		border-radius: 12px;
+		background-color: red;
+		padding: 10px;
+		font-size: 25px;
+	}
+	#deletebtn:hover{
+		box-shadow: 15px 15px 35px;
+		cursor: pointer;
+	}
+	#cancel{
+		float: right;
+		background-color: lightgreen;
+		padding: 10px;
+		font-size: 23px;
+		margin-right: 60px;
+		border-radius: 12px;
+	}
+	#cancel:hover{
+		box-shadow: 15px 15px 35px;
+		cursor: pointer;
+	}
+
+	</style>
+	<body>
+		<h1>DELETE ITEM</h1>
+		<div class="delete">
+			<form action="{{url_for('deleteitem', categoryid=item.id_category, itemid=item.id)}}" method="POST">
+				<h2>&emsp;ARE YOU SURE YOU WANT TO DELETE THIS ITEM?</h2>
+				<button type="submit" id="deletebtn">DELETE</button>
+				
+			</form>
+			<a href="{{url_for('displayitem', categoryid=item.id_category, itemid=item.id)}}"><button id="cancel">CANCEL</button></a>
+		</div>
+	</body>
+</html>

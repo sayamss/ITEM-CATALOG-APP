@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width initial-scale=1.0">
+		<style>
+		  #mainhd{
+		      text-align: center;
+			  box-shadow: 3px 3px 3px;
+			  font-size: 50px;
+			}
+		  body{
+		  	background-image: url("http://www.uttarainfo.com/wp-content/uploads/2016/10/background3.jpg");
+		  }
+		</style>
+		<script src="//apis.google.com/js/platform.js?onload=start"> </script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<h1 id="mainhd">LOG IN</h1>
+		<div id="result"></div>
+		<div id="signinButton">
+            <span class="g-signin"
+                data-scope="openid email"
+                data-clientid="Place your Client ID here"
+                data-redirecturi="postmessage"
+                data-accesstype="offline"
+                data-cookiepolicy="single_host_origin"
+                data-callback="signInCallback"
+                data-approvalprompt="force">
+            </span>
+        </div>
+
+        <script>
+        	function signInCallback(authresult){
+        		if(authresult['code']){
+
+        			$.ajax({
+        				type: "POST",
+        				url: "/googleconnect?state={{STATE}}",
+        				processData: false,
+        				data: authresult['code'],
+        				contentType: "application/octet-stream; charset=utf-8",
+        				success: function(result){
+
+        					if(result){
+        						$("#result").html("CONGRATS!! LOGIN SUCCESSFULL, REDIRECTING TO THE HOME PAGE");
+        					    setTimeout(function(){
+        						window.location.href="/home";
+        					    },4000)
+        					} else if(authresult['error']){
+        						console.log("SORRY, THERE WAS AN ERROR" + authresult['error']);
+        					} else{
+        						$("#result").html("Failed to make server side call, shame");
+        					}
+        					
+        				}
+
+        			})
+        		}
+        	}
+        </script>
+	</body>
+</html>

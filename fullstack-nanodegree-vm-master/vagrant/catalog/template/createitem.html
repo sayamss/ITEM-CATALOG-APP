@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<style>
+
+		body{
+			background-color: #c998f7;
+			font-family: sans-serif;
+		}
+		h1{
+			font-size:40px;
+		    box-shadow: 3px 3px 6px;
+			border-radius: 15px;
+			text-align: center;
+			border: 1px solid white;
+			background-color: white;
+			box-shadow: 4px 4px 8px;		
+		}
+		#form{
+
+			box-shadow: 8px 8px 55px;
+			margin-top: 120px;
+			margin-left: 640px;
+			border-radius: 17px;
+			width: 650px;
+			height: 800px;
+			background-color: white;
+		}
+		.nameinput{
+			height: 30px;
+			margin: 30px;
+			border-radius: 1px;
+			box-shadow: 3px 3px 6px;
+			text-align: center;
+			width: 70%;
+		}
+		.inputask{
+			margin: 5px;
+            font-size: 20px;
+			font-weight: bold;
+		}
+		.descriptioninput{
+			margin-top: 20px;
+            margin-left: 120px;
+			width: 500px;
+			height: 150px;
+			box-shadow: 5px 5px 5px;
+
+		}
+		.catoption{
+
+            background-color: white;
+			font-size: 40px;
+		}
+		select{
+			width: 60%;
+			box-shadow: 3px 3px 6px;
+			background-color: white;
+			border-radius: 5px;
+			margin: 40px;
+		}
+		.submit{
+			color: white;
+			text-align: center;
+			margin-left: 240px;
+			margin-top: 50px;
+			font-size: 35px;
+			background-color: #ad12fb;
+			box-shadow: 5px 5px 5px;
+			border-radius: 8px;
+
+		}
+		
+		</style>
+	</head>
+	<h1>ADD ITEM</h1>
+	<div id="form">
+		<form id="item" action="{{url_for('createitem')}}" method="POST">
+		    <span class="inputask">Name:</span>
+		 <input class="nameinput" type="text" name="name" placeholder="name" required><hr>
+		 <span class="inputask">Picture:</span>
+		 <input class="nameinput" type="text" name="picture" placeholder="picture url" required><hr>
+		 <span class="inputask">Description:</span><br>
+		 <textarea class="descriptioninput" name="description" form="item" required></textarea><hr>
+		 <span class="inputask">Category:</span>
+		 <select name="itemcategory">
+         	{% for cat in category %}
+         	  <option class="catoption" value="{{cat.Name}}" required>{{cat.Name}}</option>
+         	{% endfor %}
+         	
+         </select>
+         <hr>
+         <button class="submit" type="submit">SUBMIT</button>
+		
+	</form>
+	</div>
+	
+</html>

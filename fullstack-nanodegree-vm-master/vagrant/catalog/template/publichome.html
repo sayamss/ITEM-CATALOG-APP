@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width">
+		<style>
+		 body{
+		 	font-family: sans-serif;
+		 }
+		 #headiv{
+		 	border-radius: 5px;
+		 	box-shadow: 5px 5px 10px;
+		 	height: 60px;
+		 	margin-top: 0;
+		 	background: linear-gradient(to right, #bf00f7, #df73ff)
+		 }
+		  #mainhd{
+
+		  	font-weight: normal;
+		  	font-size: 40px;
+		  	margin-top: -8px;
+		  	text-align: center;
+		  	color: white;
+
+		  }
+		  #category{
+		  	float: left;
+		  	background: linear-gradient(58.8deg, #c998f7 50%, #ffffff 50%);
+		  	border: 2px solid black;
+		  	text-align: center;
+		  	margin: 120px;
+		  	width: 500px;
+		  	height: 800px;
+		  	
+		  	border-radius: 15px;
+		  	box-shadow: 5px 5px 15px;
+		  }
+		  .linkcat{
+		  	color: black;
+		  	background-color: white;
+		  	box-shadow: 3px 3px 6px;
+		  	text-align: center;
+		  	font-size: 25px;
+		  	margin-top: 10px;
+		  	width: 70%;
+		  	border-radius: 12px;
+
+		  }
+		  h2{
+
+		  	margin: 5px;
+		  	font-weight: normal;
+		  	font-size: 40px;
+		  }
+		  .linkcat:hover{
+		  	box-shadow: 10px 10px 20px;
+
+		  }
+		  #category:hover{
+		  	box-shadow: 20px 20px 60px;
+		  }
+		  #container{
+		  	
+		  }
+		  .latestitems{
+            
+		  	border: 2px solid black;
+		  	box-shadow: 5px 5px 10px;
+		  	height: 800px;
+		  	width: 1050px;
+		  	margin: 120px;
+		  	background-color: #c998f7;
+		  	float: left;
+		  	border-radius: 18px;
+		  }
+		  .itemcard{
+		  	
+		  	background-color: white;
+		  	margin: 40px;
+		  	display: inline-block;
+		  	border-radius: 12px;
+		  	border: 3px solid black;
+		  	box-shadow: 5px 5px 5px;
+		  }
+		  .itemcard:hover{
+		  	box-shadow: 15px 15px 35px;
+		  }
+		  a{
+		  	color: black;
+		  	text-decoration: none;
+		  }
+		  h4{
+
+
+		  	background-color: white;
+		  	font-size: 23px;
+		  	margin: 0;
+		  	text-align: center;
+		  }
+		  .infocontain{
+
+            background-color: white;
+		  	margin: 0;
+		  	background-color: #c998f7;
+		  }
+		  p{
+		  	background-color: white;
+		  	font-weight: normal;
+		  	font-size: 20px;
+		  	margin: 0;
+		  }
+		  
+		  hr{
+		  	margin: 0;
+		  }
+		  .itemhd{
+		  	font-size: 40px;
+		  	margin: 0;
+            background-color: white;
+		  	
+		  	font-weight: normal;
+		  	text-align: center;
+
+		  }
+		  #login{
+		  	border: 2px solid black;
+            margin: 10px;
+		  	color: white;
+		  	border-radius: 5px;
+		  	background-color: darkblue;
+		  	float: right;
+		  	font-size: 35px;
+		  }
+		  #login:hover{	
+		  	box-shadow: 35px 35px 45px;
+		  }
+		  img{
+		  	float: left;
+		  	width:200px;
+		  	
+		  	margin:10px;
+		  	padding:1px; 
+		  	display:inline-block;
+		  }
+
+		  
+		</style>
+		<script src="js/jquery.js"></script>
+	</head>
+	<body>
+		<div id="headiv">
+			<h1 id="mainhd">ITEM CATALOG <a id="login" href="{{url_for('login')}}">LOGIN</a></</h1>
+
+		</div>
+			<div id="category">
+		       <h2>CATEGORIES</h2>
+		       <hr size="5" color="black">	
+		       <br><br><br>
+		       {% for a in category %}
+		       <a class="linkcat" href="{{url_for('displaycategory', categoryid = a.id)}}">&emsp;&emsp;&emsp;{{a.Name}}&emsp;&emsp;&emsp;</a><br><br><br>
+		       {% endfor %}  
+		    </div>
+		    <div class="latestitems">
+		    	<h1 class="itemhd">LATEST ITEMS</h1>
+		    	<hr size="5" color="black">
+		    	{% for b in item %}
+		        <div class="itemcard">
+                    <img src="{{ b.picture }}" alt="Avatar" >
+
+                    <hr size="5" color="black">
+                    <div class="infocontain">
+                      <h4><b><a href="{{url_for('displayitem', categoryid=b.id_category, itemid=b.id)}}">{{b.Name}}</a></b></h4><hr><hr>
+                      <p>{{b.category.Name}}</p>
+                      
+
+                    </div>
+                </div> 
+                {% endfor %}
+		    	
+		    </div>
+
+		</div>
+		
+		
+	</body>
+</html>
