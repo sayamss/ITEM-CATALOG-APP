@@ -20,16 +20,6 @@ You have to download some dependencies and follow some instructions to get the A
 - [Vagrant]("https://www.vagrantup.com/")
 - [Virtual box 14]("https://www.virtualbox.org/wiki/Downloads")
 
-## Go to http://console.developers.google.com/ and setup your account
-1. Create a project
-2. Go the the credentials page
-3. click on create credentials and then ouath client id
-4. Add Authorized Javascript origins - http://localhost:5000/
-5. Add Authorized redirect URLs - http://localhost:5000/home
-6. Click on download JSON 
-7. Copy the JSON file to the /catalog folder and rename it to 'client.json'
-8. Copy your Client id given by google and paste it in the login.html file on line 26
-
 # Installation Process
 1. Install both Vagrant and Virtual box
 2. Clone the full-stack-vm-master file you downloaded 
@@ -41,6 +31,16 @@ You have to download some dependencies and follow some instructions to get the A
 8. Run the database_populate.py using python2
 9. Run the app using item_catalog_backend.py using python2
 10. Go to http://localhost:5000/ to access the app
+
+## Go to http://console.developers.google.com/ and setup your account
+1. Create a project
+2. Go the the credentials page
+3. click on create credentials and then ouath client id
+4. Add Authorized Javascript origins - http://localhost:5000/
+5. Add Authorized redirect URLs - http://localhost:5000/home
+6. Click on download JSON 
+7. Copy the JSON file to the /catalog folder and rename it to 'client.json'
+8. Copy your Client id given by google and paste it in the login.html file on line 26
 
 # JSON
 to get all the items and categories
